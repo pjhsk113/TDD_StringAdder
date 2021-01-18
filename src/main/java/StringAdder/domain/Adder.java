@@ -5,7 +5,9 @@ import java.util.List;
 public class Adder {
 
     public static int add(List<Integer> numbers) {
-
+        if (isBlank(numbers)) {
+            return 0;
+        }
         return sum(numbers);
     }
 
@@ -13,5 +15,9 @@ public class Adder {
         return inputNumber.stream()
                 .mapToInt(Integer::intValue)
                 .sum();
+    }
+
+    private static boolean isBlank(List<Integer> input) {
+        return input.isEmpty();
     }
 }
