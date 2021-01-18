@@ -26,7 +26,7 @@ class AdderTest {
     @ParameterizedTest
     @MethodSource("sumTest")
     void sum_test(List<Integer> input, int expected) {
-        int result = Adder.sum(input);
+        int result = Adder.add(input);
         assertThat(result).isSameAs(expected);
     }
 
