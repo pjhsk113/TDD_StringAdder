@@ -1,6 +1,6 @@
 package StringAdder.util;
 
-import StringAdder.exception.StringAdderExceptionHandler;
+import StringAdder.exception.ConverterExceptionHandler;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ public class Converter {
     public static List<Integer> toList(String[] input) {
         return Arrays.stream(input)
                 .map(Integer::parseInt)
-                .peek(StringAdderExceptionHandler::validate)
+                .peek(ConverterExceptionHandler::validate)
                 .collect(Collectors.toList());
     }
 }
