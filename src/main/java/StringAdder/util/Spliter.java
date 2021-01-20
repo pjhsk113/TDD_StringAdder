@@ -1,22 +1,28 @@
 package StringAdder.util;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Spliter {
-    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\\n(.*)");
     private static final String DELIMITER_PATTERN = "[,:]";
 
     private Spliter() { }
 
     public static List<Integer> split(String input) {
         if (input.contains("//")) {
-            Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
-            String customDelimiter = matcher.group(1);
-            return Converter.toList(matcher.group(2).split(customDelimiter));
+            String customDelimiter = subStringDelimiter(input);
+            String customFormula = subStringFormula(input);
+            return Converter.toList(customFormula.split(customDelimiter));
         }
 
         return Converter.toList(input.split(DELIMITER_PATTERN));
     }
+
+    private static String subStringDelimiter(String input) {
+        return input.substring(2, 3);
+    }
+
+    private static String subStringFormula(String input) {
+        return input.substring(5);
+    }
+
 }
